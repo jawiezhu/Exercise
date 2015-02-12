@@ -1,0 +1,11 @@
+
+1. The function MODIFY and DELETE has some bugs.
+2. The code is too redundancy, no efficient.
+
+
+What I learned in this code:
+(1) How to write or read some files.
+(2) The different of text file and binary file.
+(3) How to use write() read() seekg() tellg().
+(4) The array should be initialized.
+(5) Pay attention to page 768 of C++ Primer Plus.
