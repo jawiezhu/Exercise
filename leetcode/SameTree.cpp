@@ -37,3 +37,54 @@ public:
         return left&&right;
     }
 };
+
+//no recursion
+class Solution{
+public:
+    bool isSameTree(TreeNode *p,TreeNode *q){
+        if(!isSameNode(p,q))
+            return false;
+        if(!p&&!q)
+            return true;
+
+        queue<TreeNode*> lqueue;
+        queue<TreeNode*> rqueue;
+        lqueue.push(p);
+        rqueue.push(q);
+        while(!lqueue.empty()&&!rqueue.empty())
+        {
+            TreeNode *lfront=lqueue.front();
+            TreeNode *rfront=rqueue.front();
+
+            lqueue.pop();
+            rqueue.pop();
+
+            if(!isSameNode(lfront->left,rfront->left))
+                return false;
+            if(lfront->left&&rfront->left)
+            {
+                lqueue.push(lfront->left);
+                rqueue.push(rfront->left);
+            }
+
+            if(!isSameNode(lfront->right,rfront->right))
+                return false;
+            if(lfront->right&&rfront->left)
+            {
+                lqueue.push(lfront->right);
+                rqueue.push(rfront->right);
+            }
+        }
+
+        return true;
+    }
+
+    bool isSameNode(TreeNode *p,TreeNode *q)
+    {
+        if(!p&&!q)
+            return true;
+        if((p&&!q)||(!p&&q)||(p->val!=q->val))
+            return false;
+        return true
+    }
+};
