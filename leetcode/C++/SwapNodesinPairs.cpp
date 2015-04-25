@@ -15,7 +15,7 @@
  *     ListNode *next;
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
- */
+ *ERROR**/
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
@@ -145,6 +145,44 @@ public:
             p1=p1->next;
         }while(p1!=NULL && p1->next!=NULL);
         
+        return head;
+    }
+};
+
+//
+// LeetCode, Swap Nodes in Pairs
+// 时间复杂度O(n)，空间复杂度O(1)
+class Solution {
+public:
+    ListNode *swapPairs(ListNode *head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        ListNode dummy(-1);
+        dummy.next = head;
+
+        for(ListNode *prev = &dummy, *cur = prev->next, *next = cur->next;
+                next;
+                prev = cur, cur = cur->next, next = cur ? cur->next: nullptr) {
+            prev->next = next;
+            cur->next = next->next;
+            next->next = cur;
+        }
+        return dummy.next;
+    }
+};
+
+//
+// LeetCode, Swap Nodes in Pairs
+// 时间复杂度O(n)，空间复杂度O(1)
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* p = head;
+
+        while (p && p->next) {
+            swap(p->val, p->next->val);
+            p = p->next->next;
+        }
+
         return head;
     }
 };
