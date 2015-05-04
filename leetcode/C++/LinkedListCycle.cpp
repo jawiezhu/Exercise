@@ -41,3 +41,25 @@ public:
             return 0;
     }
 };
+
+
+
+
+// 最容易想到的方法是，用一个哈希表{unordered_map<int, bool> visited}，
+// 记录每个元素是否被访问过，一旦出现某个元素被重复访问，说明存在环。
+// 空间复杂度$O(n)$，时间复杂度$O(N)$。
+//LeetCode, Linked List Cycle
+// 时间复杂度O(n)，空间复杂度O(1)
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        // 设置两个指针，一个快一个慢
+        ListNode *slow = head, *fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+};
