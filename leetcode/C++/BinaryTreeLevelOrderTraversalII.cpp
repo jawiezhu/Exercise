@@ -48,7 +48,7 @@ public:
         	}else{
         		if(!tmp.empty())
         		{
-        			S.push(NULL);
+        			Q.push(NULL);
         			ret.push_back(tmp);
         			tmp.clear();
         		}
