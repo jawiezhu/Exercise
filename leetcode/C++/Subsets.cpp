@@ -290,3 +290,90 @@ public:
         return result;
     }
 };
+
+
+
+// 思路1：递归，放与不放的问题。
+// 思路2：循环生成子集，然后找子集中依次添加新元素。
+// 子集的元素个数可能有0，1，2...n个。
+// 所以可以循环在更小的子集中添加元素形成更大的子集。为了防止重复，可以先将输入字符串排序。
+class Solution {
+public:
+    vector<vector<int> >*  v;
+    vector<vector<int> > subsets(vector<int> &S) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        v = new vector<vector<int> >();
+        
+        sort(S.begin(),S.end());
+        
+        vector<int> res;
+        generate(res, S, 0);
+        
+        return *v;
+    }
+    
+    void generate(vector<int> res, vector<int> &S, int i)
+    {
+        if(i == S.size())
+        {
+            v->push_back(res);
+            return;
+        }
+        else
+        {
+            generate(res, S, i+1);
+            res.push_back(S[i]);
+            generate(res, S, i+1);
+        }
+    }
+};
+
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int> &S) {
+        sort(S.begin(),S.end());
+        vector<vector<int>> r;
+        vector<vector<int>> pre;
+        vector<vector<int>> cur;
+        int len=0;
+        vector<int> tmp;
+        cur.push_back(tmp);
+        do
+        {
+            pre = cur;
+            cur.clear();
+            for(int i=0;i<pre.size();i++)
+            {
+                r.push_back(pre[i]);
+                if(pre[i].size()>0)
+                {
+                    for(int j=0;j<S.size();j++)
+                    {
+                        if(S[j]<pre[i][0])
+                        {
+                            vector<int> tmp = pre[i];
+                            tmp.insert(tmp.begin(),S[j]);
+                            cur.push_back(tmp);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    for(int j=0;j<S.size();j++)
+                    {
+                        vector<int> tmp = pre[i];
+                        tmp.insert(tmp.begin(),S[j]);
+                        cur.push_back(tmp);
+                    }
+                }
+            }
+            len++;
+        }while(len<=S.size());
+        return r;
+    }
+};
