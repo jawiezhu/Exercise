@@ -56,7 +56,7 @@ public:
 
     	if(used[ch-'1']) return false;
 
-    	return used[ch-'1']=true;
+    	return used[ch-'1']=true; // board 0~8 所以 要减去1
 
     }
 };
