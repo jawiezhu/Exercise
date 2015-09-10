@@ -213,7 +213,7 @@ public class secondarySort {
 		job.setPartitionerClass(FirstPartitioner.class);
 		job.setSortComparatorClass(KeyComparator.class);
 		job.setGroupingComparatorClass(GroupingComparator.class);
-		
+		//GroupingComparatorClass  this line will affect the 1 is in or not in.
 		//job.setMapOutputKeyClass(MyPairWritable.class);
 		//job.setMapOutputValueClass(NullWritable.class);
 		

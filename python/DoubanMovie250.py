@@ -25,7 +25,7 @@ def crawl(url):
 pagenumber=[]
 for i in range(10):
 	page_number=25*i
-	pagenumber.appand(page_number)
+	pagenumber.append(page_number)
 pagelist=list(map(str,pagenumber))
 
 BASE_URL='http://movie.douban.com/top250?start='
