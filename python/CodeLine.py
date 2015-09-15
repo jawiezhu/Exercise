@@ -16,7 +16,7 @@ def TotalLine(path):
 			for item in files:
 					ext=item.split('.')
 					ext=ext[-1] #get the postfix of the file
-					if(ext in ["cpp","h"]):
+					if(ext in ["cpp","h","java"]):
 							subpath=root+"/"+item
 							total+=CountLine(subpath)
 		return total
