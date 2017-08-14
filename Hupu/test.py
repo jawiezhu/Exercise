@@ -18,6 +18,21 @@ def test(url):
 
 
 if __name__=='__main__':
-	url='https://bbs.hupu.com/vote'
+	#url='https://bbs.hupu.com/vote'
 
-	test(url)
+	#test(url)
+
+      a=[i/10.0 for i in range(1,101)]
+      b=[i/10.0 for i in range(1,101)]
+      c=[i/10.0 for i in range(1,101)]
+      d=[i/10.0 for i in range(1,101)]
+      
+      for x in a:
+          for y in b:
+              for z in c:
+                 for p in d:
+                     if(x+y==8 and y+p==8 and z-p==6 and x+z==13):
+                         print x,y,z,p
+                         
+                
+            
